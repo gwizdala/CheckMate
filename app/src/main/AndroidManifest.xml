@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.github.jzarakas.myapplication">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/MaterialTheme">
+        <activity
+            android:name="com.github.jzarakas.myapplication.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".Processed"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_processed"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".DataTable"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_data_table"
+            android:theme="@style/FullscreenTheme" />
+
+        <receiver android:name=".TableItem">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/table_item_info" />
+        </receiver>
+    </application>
+
+</manifest>
